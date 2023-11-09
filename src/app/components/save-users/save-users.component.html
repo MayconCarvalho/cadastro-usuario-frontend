@@ -1,0 +1,78 @@
+<h1>Cadastro de Pessoas!</h1>
+
+<div>
+    <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <label class="form-label" for="name">Nome:</label>
+            <br>
+            <input type="text" 
+                [(ngModel)]="person.name" 
+                class="form-input" 
+                name="name" 
+                id="name" 
+                formControlName="name"
+                required
+                minlength="3"
+                maxlength="5"
+            >
+        </div>
+        
+        <div class="form-group row">
+            <label class="form-label" for="email">E-mail:</label>
+            <br>
+            <input type="text" 
+                [(ngModel)]="person.email" 
+                class="form-input" 
+                name="email" 
+                id="email" 
+                formControlName="email"
+                required
+            >
+        </div>
+        
+        <div class="form-group row">
+            <label class="form-label" for="password">Senha:</label>
+            <br>
+            <input type="password" 
+                [(ngModel)]="person.password" 
+                class="form-input" 
+                name="password" 
+                id="password" 
+                formControlName="password"
+                required
+                minlength="6"
+                maxlength="20"
+            >
+        </div>
+        
+        <div class="form-group row">
+            <label class="form-label" for="confirmPassword">Confirmação de Senha:</label>
+            <br>
+            <input type="password" 
+                [(ngModel)]="person.confirmPassword" 
+                class="form-input" 
+                name="confirmPassword" 
+                id="confirmPassword" 
+                formControlName="confirmPassword"
+                required
+                minlength="6"
+                maxlength="20"
+            >
+        </div>
+      
+        <div>
+            <button 
+                [disabled]="personForm.invalid || (person.password != person.confirmPassword)"
+                class="btn btn-primary mt-4 btn-submit" 
+                type="submit"
+            >Salvar
+            </button>
+            <button 
+                class="btn btn-primary mt-4 btn-cancel" 
+                type="button" 
+                (click)="cleanForm()"
+                >Cancelar
+            </button>
+        </div>
+    </form>
+</div>

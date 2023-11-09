@@ -1,0 +1,25 @@
+.form-group {
+    margin: 20px 5px;
+}
+
+.form-label {
+    font-size: 14px;
+    color: black;
+    margin: 0px 10px;
+}
+
+.form-input {
+    margin: 0px 10px;
+    padding: 0px 10px;
+    height: 25px;
+}
+
+.btn-submit {
+    margin: 0px 10px;
+    padding: 0px 10px;
+}
+
+.btn-cancel {
+    margin: 0px 10px;
+    padding: 0px 10px;
+}
