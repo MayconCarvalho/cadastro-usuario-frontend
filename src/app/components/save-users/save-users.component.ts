@@ -47,21 +47,17 @@ export class SaveUsersComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.personForm.value);
-    console.log(this.person);
-    
     this.service.savePerson(this.person)
       .subscribe((resp) => {
-        console.log('saved ' + JSON.stringify(resp))
         this.cleanForm();
         alert('salvo com sucesso');
       }, (error) => {
-        console.error(error);
+        alert('error ao salvar: ' + JSON.stringify(error.error));
       });
   }
   
   cleanForm() {
     this.personForm.reset();
     this.person = new Person();
-  }
+  } 
 }

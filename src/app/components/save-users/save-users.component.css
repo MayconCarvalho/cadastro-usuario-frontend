@@ -1,5 +1,5 @@
 .form-group {
-    margin: 20px 5px;
+    margin: 5px 5px;
 }
 
 .form-label {
@@ -10,16 +10,38 @@
 
 .form-input {
     margin: 0px 10px;
-    padding: 0px 10px;
+    padding: 2px 10px;
     height: 25px;
+    width: 350px;
 }
 
 .btn-submit {
-    margin: 0px 10px;
-    padding: 0px 10px;
+    margin: 0px 15px;
+    padding: 2px 25px;
 }
 
 .btn-cancel {
-    margin: 0px 10px;
-    padding: 0px 10px;
+    margin: 0px 15px;
+    padding: 2px 25px;
+}
+
+.messagem-error {
+    padding-left: 10px;
+    margin: 2px 0px;
+    font-size: 10px;
+    color: red;
+}
+
+.mesagens-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    margin-left: 15px;
 }
