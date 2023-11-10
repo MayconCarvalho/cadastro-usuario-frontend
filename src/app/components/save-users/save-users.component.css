@@ -1,5 +1,5 @@
 .form-group {
-    margin: 5px 5px;
+    margin: 15px 5px;
 }
 
 .form-label {
@@ -32,16 +32,15 @@
     color: red;
 }
 
-.mesagens-input {
-    display: flex;
-    flex-direction: column;
-}
-
 .center-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-h2 {
-    margin-left: 15px;
+.center-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

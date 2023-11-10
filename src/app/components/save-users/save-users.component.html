@@ -13,7 +13,7 @@
                 minlength="3"
                 maxlength="50"
             >
-            <div class="mesagens-input" *ngIf="personForm.get('name')?.invalid && personForm.get('name')?.errors && 
+            <div *ngIf="personForm.get('name')?.invalid && personForm.get('name')?.errors && 
                 (personForm.get('name')?.dirty || personForm.get('name')?.touched)">
                 <small class="messagem-error" *ngIf="personForm.get('name')?.hasError('required')">
                     Campo nome obrigatório
@@ -34,7 +34,7 @@
                 formControlName="email"
                 required
             >
-            <div class="mesagens-input" *ngIf="personForm.get('email')?.invalid && personForm.get('email')?.errors && 
+            <div *ngIf="personForm.get('email')?.invalid && personForm.get('email')?.errors && 
                 (personForm.get('email')?.dirty || personForm.get('email')?.touched)">
                 <small class="messagem-error" *ngIf="personForm.get('email')?.hasError('required')">
                     Campo e-mail obrigatório
@@ -57,7 +57,7 @@
                 minlength="6"
                 maxlength="20"
             >
-            <div class="mesagens-input" *ngIf="personForm.get('password')?.invalid && personForm.get('password')?.errors && 
+            <div *ngIf="personForm.get('password')?.invalid && personForm.get('password')?.errors && 
                 (personForm.get('password')?.dirty || personForm.get('password')?.touched)">
                 <small class="messagem-error" *ngIf="personForm.get('password')?.hasError('required')">
                     Campo senha obrigatório
@@ -69,7 +69,7 @@
         </div>
         
         <div class="form-group">
-            <label class="form-label" for="confirmPassword">Confirmação de Senha:</label>
+            <label class="form-label" for="confirmPassword">Confirmação de senha:</label>
             <input type="password" 
                 [(ngModel)]="person.confirmPassword" 
                 class="form-input form-control" 
@@ -80,7 +80,7 @@
                 minlength="6"
                 maxlength="20"
             >
-            <div class="mesagens-input" *ngIf="personForm.get('confirmPassword')?.invalid && personForm.get('confirmPassword')?.errors && 
+            <div *ngIf="personForm.get('confirmPassword')?.invalid && personForm.get('confirmPassword')?.errors && 
                 (personForm.get('confirmPassword')?.dirty || personForm.get('confirmPassword')?.touched)">
                 <small class="messagem-error" *ngIf="personForm.get('confirmPassword')?.hasError('required')">
                     Campo Confirmação de senha obrigatório
@@ -89,14 +89,14 @@
                     Quantidade mínima de {{personForm.get('confirmPassword')?.errors?.['minlength']?.requiredLength}} caracteres
                 </small>
             </div>
-            <div class="mesagens-input" *ngIf="person.confirmPassword">
+            <div *ngIf="person.confirmPassword">
                 <small class="messagem-error" *ngIf="person.password != person.confirmPassword">
                     O campo Senha e Confirmação de senha estão diferentes  
                 </small>
             </div>
         </div>
       
-        <div>
+        <div class="center-btn">
             <button 
                 [disabled]="personForm.invalid || (person.password != person.confirmPassword)"
                 class="btn btn-primary mt-4 btn-submit" 
@@ -111,4 +111,18 @@
             </button>
         </div>
     </form>
+</div>
+<div>
+    <p-dialog header="Aviso" [(visible)]="visibleModal" [modal]="true" [draggable]="false" 
+            [resizable]="false" [style]="{width: '500px'}">
+        <p> {{ message }} </p>
+        <div class="center-btn">
+            <button
+                class="btn btn-primary mt-4 btn-cancel" 
+                type="button"
+                (click)="closeDialog()"
+            >OK
+            </button>
+        </div>
+    </p-dialog>
 </div>

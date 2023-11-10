@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonDTO } from '../../models/personDTO.model';
 import { SaveUsersService } from '../../service/save-users.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-save-users',
@@ -13,6 +12,8 @@ export class SaveUsersComponent implements OnInit {
 
   personForm: FormGroup;
   person: PersonDTO;
+  visibleModal: boolean;
+  message: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,6 +43,8 @@ export class SaveUsersComponent implements OnInit {
     });
     
     this.person = new PersonDTO();
+    this.visibleModal = false;
+    this.message = '';
   }
 
   ngOnInit(): void {
@@ -52,10 +55,10 @@ export class SaveUsersComponent implements OnInit {
       .subscribe({
         next: (resp) => {
           this.cleanForm();
-          alert('salvo com sucesso');
+          this.openDialog(`Registro ${resp.name} salvo com sucesso.`);
         },
-        error: (error: HttpErrorResponse) => {
-          alert('error ao salvar: ' + JSON.stringify(error.error));
+        error: (error) => {
+          this.openDialog(`Error ao salvar registro: ${JSON.stringify(error.error||error.message)}`);
         }
       });
   }
@@ -64,4 +67,14 @@ export class SaveUsersComponent implements OnInit {
     this.personForm.reset();
     this.person = new PersonDTO();
   } 
+
+  openDialog(message: string): void {
+    this.message = message;
+    this.visibleModal = true;
+  }
+
+  closeDialog() {
+    this.visibleModal = false;
+    this.message = '';
+  }
 }
