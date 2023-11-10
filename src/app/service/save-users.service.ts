@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Person } from '../models/person.model';
+import { PersonDTO } from '../models/personDTO.model';
 import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 import { API_CONFIG } from '../../config/api.config';
 import { Observable } from 'rxjs';
 
@@ -19,7 +18,7 @@ export class SaveUsersService {
     constructor(private http: HttpClient) {
     }
 
-    savePerson(person: Person): Observable<any> {
-        return this.http.post<Person>(`${API_CONFIG.baseUrl}/person/`, person, this.httpPostOptions);
+    savePerson(person: PersonDTO): Observable<any> {
+        return this.http.post<PersonDTO>(`${API_CONFIG.baseUrl}/person/`, person, this.httpPostOptions);
     }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Person } from '../../models/person.model';
+import { PersonDTO } from '../../models/personDTO.model';
 import { SaveUsersService } from '../../service/save-users.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-save-users',
@@ -11,7 +12,7 @@ import { SaveUsersService } from '../../service/save-users.service';
 export class SaveUsersComponent implements OnInit {
 
   personForm: FormGroup;
-  person: Person;
+  person: PersonDTO;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +41,7 @@ export class SaveUsersComponent implements OnInit {
       ],
     });
     
-    this.person = new Person();
+    this.person = new PersonDTO();
   }
 
   ngOnInit(): void {
@@ -48,16 +49,19 @@ export class SaveUsersComponent implements OnInit {
 
   onSubmit() {
     this.service.savePerson(this.person)
-      .subscribe((resp) => {
-        this.cleanForm();
-        alert('salvo com sucesso');
-      }, (error) => {
-        alert('error ao salvar: ' + JSON.stringify(error.error));
+      .subscribe({
+        next: (resp) => {
+          this.cleanForm();
+          alert('salvo com sucesso');
+        },
+        error: (error: HttpErrorResponse) => {
+          alert('error ao salvar: ' + JSON.stringify(error.error));
+        }
       });
   }
   
   cleanForm() {
     this.personForm.reset();
-    this.person = new Person();
+    this.person = new PersonDTO();
   } 
 }
