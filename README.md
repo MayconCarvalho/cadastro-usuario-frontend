@@ -17,3 +17,6 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running prod version
 
 Run `docker-compose up --build` using docker
+
+### Screen CRUD
+![Screen CRUD](./images/screen.PNG)
