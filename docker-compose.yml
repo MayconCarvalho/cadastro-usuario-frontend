@@ -1,0 +1,16 @@
+services:
+  frontend:
+    image: cadastro-usuarios-frontend-angular:1.0
+    container_name: cadastro-usuarios-frontend-angular
+    build: .
+    ports:
+      - "4200:80"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks: 
+      - cad-usuers-frontend-network
+
+networks:
+  cad-usuers-frontend-network:
+    driver: bridge
